@@ -47,9 +47,9 @@ function TypingAnimation(){
 
     let mastertl = gsap.timeline({delay:1,onComplete:function(){
         gsap.to("#about",{duration:0.5,opacity:1});
-        gsap.to("#skills",{duration:0.5,opacity:1,delay:1});
-        gsap.to("#projects",{duration:0.5,opacity:1,delay:2});
-        gsap.to("#contact",{duration:0.5,opacity:1,delay:3});
+        gsap.to("#skills",{duration:0.5,opacity:1,delay:0.3});
+        gsap.to("#projects",{duration:0.5,opacity:1,delay:0.6});
+        gsap.to("#contact",{duration:0.5,opacity:1,delay:0.9});
 
     }});
 
@@ -58,7 +58,7 @@ function TypingAnimation(){
         let tl = gsap.timeline()
         if(counter !== 2 ){
             tl.to("#typewriter", {
-                duration: 2, 
+                duration: 1, 
                 text:word,
                 repeat:1,
                 repeatDelay:1,
@@ -67,7 +67,7 @@ function TypingAnimation(){
             counter++;
         }else{
             tl.to("#typewriter", {
-                duration: 2, 
+                duration: 1, 
                 text:word,
                 ease:"none"});
             counter = 0;

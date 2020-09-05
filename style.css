@@ -68,13 +68,18 @@ body{
     right:0%;
 }
 
+.bio{
+    letter-spacing: 1px;
+    line-height: 2rem;
+}
+
 .down-btn{
     display: none;
 }
 
 /* media queries  */
 
-@media screen and (max-width:400px){
+@media screen and (max-width:600px){
     .logo{
         top: 2%;
         left:3%;
@@ -110,21 +115,22 @@ body{
         top:0;
         left:0;
         width:100vw;
-        height:100vh;
+        /* height:100vh; */
         z-index:2;
-    }
-
-    .full-height{
-        position:relative;
+        overflow-y:auto;
     }
 
     .down-btn{
-        display:inline;
-        position: absolute;
+        display:block;
         color:black;
         font-size:3rem;
-        top:80%;
-        right:10%;
     }
+
+    
+    
+    .bio{
+        letter-spacing: 1px;
+    }
+
 
 }
