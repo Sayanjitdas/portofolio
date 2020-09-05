@@ -67,3 +67,64 @@ body{
     top:0%;
     right:0%;
 }
+
+.down-btn{
+    display: none;
+}
+
+/* media queries  */
+
+@media screen and (max-width:400px){
+    .logo{
+        top: 2%;
+        left:3%;
+    }
+
+    #typewriter{
+        font-size:1rem;
+    }
+
+    #cursor{
+        font-size:1rem;
+    }
+
+    .mynav{
+        width: 90%;
+        padding: 10px !important;
+    }
+
+    .typer{
+        margin-top:5px;
+        height:3vh;
+    }
+
+    .mynav li span{
+        font-size:1rem;
+    }
+
+    .typer i{
+        font-size:1rem;
+    }
+
+    #about-content,#skills-content,#projects-content,#contact-content{
+        top:0;
+        left:0;
+        width:100vw;
+        height:100vh;
+        z-index:2;
+    }
+
+    .full-height{
+        position:relative;
+    }
+
+    .down-btn{
+        display:inline;
+        position: absolute;
+        color:black;
+        font-size:3rem;
+        top:90%;
+        right:20px;
+    }
+
+}

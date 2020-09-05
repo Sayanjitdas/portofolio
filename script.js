@@ -21,13 +21,25 @@ gsap.set("#about",{opacity:0});
 gsap.set("#skills",{opacity:0});
 gsap.set("#projects",{opacity:0});
 gsap.set("#contact",{opacity:0});
-gsap.set("#about-content",{x:1000});
-gsap.set("#skills-content",{x:1000});
-gsap.set("#projects-content",{x:1000});
-gsap.set("#contact-content",{x:1000});
+
+function InitialStateOfnav(){
+    if(screen.width < 1000){
+        gsap.set("#about-content",{y:1000});
+        gsap.set("#skills-content",{y:1000});
+        gsap.set("#projects-content",{y:1000});
+        gsap.set("#contact-content",{y:1000});
+    }else{
+        gsap.set("#about-content",{x:1000});
+        gsap.set("#skills-content",{x:1000});
+        gsap.set("#projects-content",{x:1000});
+        gsap.set("#contact-content",{x:1000});
+    }
+}
+
+
+
+
 gsap.set(".logo",{y:-20,opacity:0})
-
-
 gsap.to(".logo",{duration:0.8,y:0,opacity:1})
 
 
@@ -66,37 +78,61 @@ function TypingAnimation(){
 }
 
 
-
 //content slider handler......
 function sliderHandler(section){
-
-    gsap.to(".mynav",{duration:1,x:-250})
-    
     if(section === prevSlide){
         return
     }
-
-    sliderList.forEach(slide=>{
-        if(slide[1] === 1){
-                gsap.to(`#${slide[0]}-content`,{duration:1,x:1000});
-        }
-    })
-    sum = 0;
-    sliderList.forEach(slide => sum += slide[1])
-    if(sum == 0){
-        gsap.to(`#${section}-content`,{duration:1,x:0,onComplete:function(){
-        }});  
-    }else{
-        gsap.to(`#${section}-content`,{duration:1,x:0,delay:0.4,onComplete:function(){
-        }}); 
-    }
-    sliderList.forEach(slide =>{
-        if(slide[0] === section){
-            slide[1] = 1;
+    if(screen.width > 1000){
+        gsap.to(".mynav",{duration:1,x:-250});
+        sliderList.forEach(slide=>{
+            if(slide[1] === 1){
+                    gsap.to(`#${slide[0]}-content`,{duration:1,x:1000});
+            }
+        })
+        sum = 0;
+        sliderList.forEach(slide => sum += slide[1])
+        if(sum == 0){
+            gsap.to(`#${section}-content`,{duration:1,x:0,onComplete:function(){
+            }});  
         }else{
-            slide[1] = 0;
+            gsap.to(`#${section}-content`,{duration:1,x:0,delay:0.5,onComplete:function(){
+            }}); 
         }
-    })
+        sliderList.forEach(slide =>{
+            if(slide[0] === section){
+                slide[1] = 1;
+            }else{
+                slide[1] = 0;
+            }
+        })
+    }else{
+        sliderList.forEach(slide=>{
+            if(slide[1] === 1){
+                gsap.to(`#${slide[0]}-content`,{duration:1,y:1000});
+            }
+        })
+        sum = 0;
+        sliderList.forEach(slide => sum += slide[1])
+        if(sum == 0){
+            console.log("sum-0");
+            gsap.to(`#${section}-content`,{duration:1,y:0,onComplete:function(){
+
+            }});  
+        }else{
+            console.log("sum-1");
+            gsap.to(`#${section}-content`,{duration:1,y:0,delay:0.4,onComplete:function(){
+            }}); 
+        }
+        sliderList.forEach(slide =>{
+            if(slide[0] === section){
+                slide[1] = 1;
+            }else{
+                slide[1] = 0;
+            }
+        })
+    }
+
     prevSlide = section;
 }
 
@@ -105,22 +141,57 @@ document.querySelector('#skills').addEventListener('click',function(){sliderHand
 document.querySelector('#projects').addEventListener('click',function(){sliderHandler('projects')});
 document.querySelector('#contact').addEventListener('click',function(){sliderHandler('contact')});
 
+
 document.querySelector(".logo").addEventListener('click',function(){
     sliderList.forEach(slide=>{
-        if(slide[1] === 1){
+        if(screen.width > 1000){
+            if(slide[1] === 1){
                 gsap.to(`#${slide[0]}-content`,{duration:1,x:1000});
                 slide[1] = 0;
+            }
+        }else{
+            if(slide[1] === 1){
+                gsap.to(`#${slide[0]}-content`,{duration:1,y:1000});
+                slide[1] = 0;
+            }
         }
+
     })
     prevSlide = "";
     gsap.to(".mynav",{duration:1,x:0,onComplete:function(){
         document.querySelector("#typewriter").innerHTML= "";
+        InitialStateOfnav();
         TypingAnimation();
     }});
 
     
 })
 
+gsap.to(".down-btn",{duration:0.6,y:10,repeat:-1,yoyo:true})
+
+//for mobile and tablet screen slide up and down handler
+function slideHandlerMobile(section){
+    gsap.to(`#${section}-content`,{duration:1,y:1000});
+    sliderList.forEach(slide =>{
+            slide[1] = 0;
+    })
+    prevSlide = "";
+}
+
+
+document.querySelector('#about-content-down').addEventListener('click',function(){
+    slideHandlerMobile('about');
+})
+document.querySelector('#skills-content-down').addEventListener('click',function(){
+    slideHandlerMobile('skills');
+})
+document.querySelector('#projects-content-down').addEventListener('click',function(){
+    slideHandlerMobile('projects');
+})
+document.querySelector('#contact-content-down').addEventListener('click',function(){
+    slideHandlerMobile('contact');
+})
 
 //initial call on pageload
-TypingAnimation()
+InitialStateOfnav();
+TypingAnimation();
