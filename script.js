@@ -171,7 +171,10 @@ gsap.to(".down-btn",{duration:0.6,y:10,repeat:-1,yoyo:true})
 
 //for mobile and tablet screen slide up and down handler
 function slideHandlerMobile(section){
-    gsap.to(`#${section}-content`,{duration:1,y:1000});
+    gsap.to(`#${section}-content`,{duration:1,y:1000,onComplete:function(){
+        gsap.set(`#${section}-content`,{y:1000});
+        document.querySelector(`#${section}-content`).scrollTo(0,0);
+    }});
     sliderList.forEach(slide =>{
             slide[1] = 0;
     })
