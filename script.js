@@ -21,6 +21,7 @@ gsap.set("#about",{opacity:0});
 gsap.set("#skills",{opacity:0});
 gsap.set("#projects",{opacity:0});
 gsap.set("#contact",{opacity:0});
+gsap.set(".back-arrow",{opacity:0,display:"none"});
 
 function InitialStateOfnav(){
     if(screen.width < 1000){
@@ -84,7 +85,9 @@ function sliderHandler(section){
         return
     }
     if(screen.width > 1000){
-        gsap.to(".mynav",{duration:1,x:-250});
+        gsap.to(".mynav",{duration:1,x:-250,onComplete:function(){
+            gsap.to(".back-arrow",{duration:0.5,display:"inline",opacity:1});
+        }});
         sliderList.forEach(slide=>{
             if(slide[1] === 1){
                     gsap.to(`#${slide[0]}-content`,{duration:1,x:1000});
@@ -136,13 +139,7 @@ function sliderHandler(section){
     prevSlide = section;
 }
 
-document.querySelector('#about').addEventListener('click',function(){sliderHandler('about')});
-document.querySelector('#skills').addEventListener('click',function(){sliderHandler('skills')});
-document.querySelector('#projects').addEventListener('click',function(){sliderHandler('projects')});
-document.querySelector('#contact').addEventListener('click',function(){sliderHandler('contact')});
-
-
-document.querySelector(".logo").addEventListener('click',function(){
+function backArrowHandler(){
     sliderList.forEach(slide=>{
         if(screen.width > 1000){
             if(slide[1] === 1){
@@ -158,14 +155,25 @@ document.querySelector(".logo").addEventListener('click',function(){
 
     })
     prevSlide = "";
+    gsap.to(".back-arrow",{duration:0.5,opacity:0,x:200});
     gsap.to(".mynav",{duration:1,x:0,onComplete:function(){
+        gsap.set(".back-arrow",{x:0,display:"none"});
         document.querySelector("#typewriter").innerHTML= "";
         InitialStateOfnav();
         TypingAnimation();
     }});
+}
 
-    
-})
+
+
+document.querySelector('#about').addEventListener('click',function(){sliderHandler('about')});
+document.querySelector('#skills').addEventListener('click',function(){sliderHandler('skills')});
+document.querySelector('#projects').addEventListener('click',function(){sliderHandler('projects')});
+document.querySelector('#contact').addEventListener('click',function(){sliderHandler('contact')});
+
+
+document.querySelector(".logo").addEventListener('click',backArrowHandler);
+document.querySelector(".back-arrow").addEventListener('click',backArrowHandler);
 
 gsap.to(".down-btn",{duration:0.6,y:10,repeat:-1,yoyo:true})
 

@@ -15,6 +15,7 @@ body{
 
 .logo{
     cursor: pointer;
+    display:inline;
     position: fixed;
     color: white;
     font-weight:700;
@@ -23,6 +24,15 @@ body{
     top: 2%;
     left: 2%;
     z-index:1
+}
+
+.back-arrow{
+    cursor: pointer;
+    position:fixed;
+    display:inline;
+    right:43%;
+    top:2%;
+    z-index:2;
 }
 
 #cursor{
@@ -83,6 +93,9 @@ body{
     .logo{
         top: 2%;
         left:3%;
+    }
+    .back-arrow{
+        display:none;
     }
 
     #typewriter{
