@@ -80,6 +80,7 @@ body{
     height:100vh;
     top:0%;
     right:0%;
+    z-index:4;
 }
 
 .bio{
@@ -140,7 +141,7 @@ body{
         top:0;
         left:0;
         width:100vw;
-        z-index:2;
+        z-index:4;
         overflow-y:auto;
     }
 
