@@ -122,6 +122,7 @@ body{
     .mynav{
         width: 90%;
         padding: 10px !important;
+        height: 35vh;
     }
 
     .typer{
@@ -159,7 +160,7 @@ body{
 
     #skills-content img{
         width:4rem;
-        margin: 3rem !important;
+        margin: 2rem !important;
     }
     
 
