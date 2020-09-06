@@ -25,15 +25,15 @@ gsap.set(".back-arrow",{opacity:0,display:"none"});
 
 function InitialStateOfnav(){
     if(screen.width < 1000){
-        gsap.set("#about-content",{y:1000});
-        gsap.set("#skills-content",{y:1000});
-        gsap.set("#projects-content",{y:1000});
-        gsap.set("#contact-content",{y:1000});
+        gsap.set("#about-content",{y:1000,display:"none"});
+        gsap.set("#skills-content",{y:1000,display:"none"});
+        gsap.set("#projects-content",{y:1000,display:"none"});
+        gsap.set("#contact-content",{y:1000,display:"none"});
     }else{
-        gsap.set("#about-content",{x:1000});
-        gsap.set("#skills-content",{x:1000});
-        gsap.set("#projects-content",{x:1000});
-        gsap.set("#contact-content",{x:1000});
+        gsap.set("#about-content",{x:1000,display:"none"});
+        gsap.set("#skills-content",{x:1000,display:"none"});
+        gsap.set("#projects-content",{x:1000,display:"none"});
+        gsap.set("#contact-content",{x:1000,display:"none"});
     }
 }
 
@@ -90,16 +90,18 @@ function sliderHandler(section){
         }});
         sliderList.forEach(slide=>{
             if(slide[1] === 1){
-                    gsap.to(`#${slide[0]}-content`,{duration:1,x:1000});
+                    gsap.to(`#${slide[0]}-content`,{duration:1,x:1000,onComplete:function(){
+                        gsap.set(`#${slide[0]}-content`,{duration:1,x:1000,display:"none"});
+                    }});                   
             }
         })
         sum = 0;
         sliderList.forEach(slide => sum += slide[1])
         if(sum == 0){
-            gsap.to(`#${section}-content`,{duration:1,x:0,onComplete:function(){
+            gsap.to(`#${section}-content`,{duration:1,display:"block",x:0,onComplete:function(){
             }});  
         }else{
-            gsap.to(`#${section}-content`,{duration:1,x:0,delay:0.5,onComplete:function(){
+            gsap.to(`#${section}-content`,{duration:1,display:"block",x:0,delay:0.5,onComplete:function(){
             }}); 
         }
         sliderList.forEach(slide =>{
@@ -112,19 +114,22 @@ function sliderHandler(section){
     }else{
         sliderList.forEach(slide=>{
             if(slide[1] === 1){
-                gsap.to(`#${slide[0]}-content`,{duration:1,y:1000});
+                gsap.to(`#${slide[0]}-content`,{duration:1,y:1000,function(){
+                    gsap.set(`#${slide[0]}-content`,{duration:1,y:1000,display:"none"});
+                }});
+                
             }
         })
         sum = 0;
         sliderList.forEach(slide => sum += slide[1])
         if(sum == 0){
             console.log("sum-0");
-            gsap.to(`#${section}-content`,{duration:1,y:0,onComplete:function(){
+            gsap.to(`#${section}-content`,{duration:1,display:"block",y:0,onComplete:function(){
 
             }});  
         }else{
             console.log("sum-1");
-            gsap.to(`#${section}-content`,{duration:1,y:0,delay:0.4,onComplete:function(){
+            gsap.to(`#${section}-content`,{duration:1,display:"block",y:0,delay:0.4,onComplete:function(){
             }}); 
         }
         sliderList.forEach(slide =>{
@@ -144,11 +149,13 @@ function backArrowHandler(){
         if(screen.width > 1000){
             if(slide[1] === 1){
                 gsap.to(`#${slide[0]}-content`,{duration:1,x:1000});
+                // gsap.set(`#${slide[0]}-content`,{duration:1,x:1000,display:"none"});
                 slide[1] = 0;
             }
         }else{
             if(slide[1] === 1){
                 gsap.to(`#${slide[0]}-content`,{duration:1,y:1000});
+                // gsap.set(`#${slide[0]}-content`,{duration:1,y:1000,display:"none"});
                 slide[1] = 0;
             }
         }
@@ -182,6 +189,7 @@ function slideHandlerMobile(section){
     gsap.to(`#${section}-content`,{duration:1,y:1000,onComplete:function(){
         // gsap.set(`#${section}-content`,{y:1000});
         document.querySelector(`#${section}-content`).scrollTo(0,0);
+        gsap.set(`#${section}-content`,{duration:1,y:1000,display:"none"});
     }});
     sliderList.forEach(slide =>{
             slide[1] = 0;
