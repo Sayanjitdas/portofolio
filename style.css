@@ -55,6 +55,10 @@ body{
     height:20px;
 }
 
+.mynav{
+    height:30vh;
+}
+
 .mynav li span{
     cursor:pointer;
     font-size:1.2rem;
@@ -85,6 +89,14 @@ body{
 
 .down-btn{
     display: none;
+}
+
+#skills-content img{
+    width:6rem;
+}
+
+.social img{
+    width:3rem;
 }
 
 /* media queries  */
@@ -138,11 +150,15 @@ body{
         font-size:3rem;
     }
 
-    
-    
+
     .bio{
         letter-spacing: 1px;
     }
 
+    #skills-content img{
+        width:4rem;
+        margin: 3rem !important;
+    }
+    
 
 }

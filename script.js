@@ -17,10 +17,10 @@ let prevSlide = "";
 
 //Initial set state for gsap
 gsap.to("#cursor",{duration:0.8,opacity:0,repeat:-1});
-gsap.set("#about",{opacity:0});
-gsap.set("#skills",{opacity:0});
-gsap.set("#projects",{opacity:0});
-gsap.set("#contact",{opacity:0});
+gsap.set("#about",{opacity:0,display:"none"});
+gsap.set("#skills",{opacity:0,display:"none"});
+gsap.set("#projects",{opacity:0,display:"none"});
+gsap.set("#contact",{opacity:0,display:"none"});
 gsap.set(".back-arrow",{opacity:0,display:"none"});
 
 function InitialStateOfnav(){
@@ -47,10 +47,10 @@ gsap.to(".logo",{duration:0.8,y:0,opacity:1})
 function TypingAnimation(){
 
     let mastertl = gsap.timeline({delay:1,onComplete:function(){
-        gsap.to("#about",{duration:0.5,opacity:1});
-        gsap.to("#skills",{duration:0.5,opacity:1,delay:0.3});
-        gsap.to("#projects",{duration:0.5,opacity:1,delay:0.6});
-        gsap.to("#contact",{duration:0.5,opacity:1,delay:0.9});
+        gsap.to("#about",{duration:0.5,display:"block",opacity:1});
+        gsap.to("#skills",{duration:0.5,display:"block",opacity:1,delay:0.3});
+        gsap.to("#projects",{duration:0.5,display:"block",opacity:1,delay:0.6});
+        gsap.to("#contact",{duration:0.5,display:"block",opacity:1,delay:0.9});
 
     }});
 
@@ -180,7 +180,7 @@ gsap.to(".down-btn",{duration:0.6,y:10,repeat:-1,yoyo:true})
 //for mobile and tablet screen slide up and down handler
 function slideHandlerMobile(section){
     gsap.to(`#${section}-content`,{duration:1,y:1000,onComplete:function(){
-        gsap.set(`#${section}-content`,{y:1000});
+        // gsap.set(`#${section}-content`,{y:1000});
         document.querySelector(`#${section}-content`).scrollTo(0,0);
     }});
     sliderList.forEach(slide =>{
