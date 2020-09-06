@@ -220,6 +220,20 @@ window.addEventListener("load",function() {
     }, 0);
 });
 
+function windowSizeHandler(){
+    let windowHeight =  window.innerHeight();
+    document.querySelector('body').style.height = windowHeight;
+}
+
+if(screen.width < 1000){
+    document.querySelector('#name').addEventListener('focus',windowSizeHandler);
+    document.querySelector('#email').addEventListener('focus',windowSizeHandler);
+    document.querySelector('#message').addEventListener('focus',windowSizeHandler);
+}
+
+
+
+
 //initial call on pageload
 InitialStateOfnav();
 TypingAnimation();
