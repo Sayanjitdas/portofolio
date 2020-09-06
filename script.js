@@ -25,7 +25,7 @@ gsap.set(".back-arrow",{opacity:0,display:"none"});
 
 function InitialStateOfnav(){
     if(screen.width < 1000){
-        document.body.requestFullscreen();
+        // document.body.requestFullscreen();
         gsap.set("#about-content",{y:1000,display:"none"});
         gsap.set("#skills-content",{y:1000,display:"none"});
         gsap.set("#projects-content",{y:1000,display:"none"});

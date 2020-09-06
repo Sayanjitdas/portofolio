@@ -2,6 +2,7 @@
 
 body{
     font-family: 'Roboto Mono', monospace;
+    position:relative;
 }
 
 .main-background{
