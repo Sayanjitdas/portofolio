@@ -220,20 +220,20 @@ window.addEventListener("load",function() {
     }, 0);
 });
 
-function windowSizeHandler(){
-    console.log("here...");
-    let windowHeight =  window.innerHeight;
-    console.log(windowHeight);
-    document.body.style.height = windowHeight;
-    document.querySelector('#contact-content').style.height = windowHeight;
-    gsap.to("#contact-content",{height:windowHeight});
-}
+// function windowSizeHandler(){
+//     console.log("here...");
+//     let windowHeight =  window.innerHeight;
+//     console.log(windowHeight);
+//     document.body.style.height = windowHeight;
+//     document.querySelector('#contact-content').style.height = windowHeight;
+//     gsap.to("#contact-content",{height:windowHeight});
+// }
 
-// window.addEventListener("resize", windowSizeHandler);
+// // window.addEventListener("resize", windowSizeHandler);
 
-document.querySelector('#name').addEventListener('focus',windowSizeHandler);
-document.querySelector('#email').addEventListener('focus',windowSizeHandler);
-document.querySelector('#message').addEventListener('focus',windowSizeHandler);
+// document.querySelector('#name').addEventListener('focus',windowSizeHandler);
+// document.querySelector('#email').addEventListener('focus',windowSizeHandler);
+// document.querySelector('#message').addEventListener('focus',windowSizeHandler);
 
 //initial call on pageload
 InitialStateOfnav();
