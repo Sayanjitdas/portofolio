@@ -25,7 +25,7 @@ gsap.set(".back-arrow",{opacity:0,display:"none"});
 
 function InitialStateOfnav(){
     if(screen.width < 1000){
-        document.body.requestFullscreen();
+        // document.body.requestFullscreen();
         gsap.set("#about-content",{y:1000,display:"none"});
         gsap.set("#skills-content",{y:1000,display:"none"});
         gsap.set("#projects-content",{y:1000,display:"none"});
@@ -225,16 +225,15 @@ function windowSizeHandler(){
     let windowHeight =  window.innerHeight;
     console.log(windowHeight);
     document.body.style.height = windowHeight;
+    document.querySelector('#contact-content').style.height = windowHeight;
+    gsap.to("#contact-content",{height:windowHeight});
 }
 
-if(screen.width < 1000){
-    document.querySelector('#name').addEventListener('focus',windowSizeHandler);
-    document.querySelector('#email').addEventListener('focus',windowSizeHandler);
-    document.querySelector('#message').addEventListener('focus',windowSizeHandler);
-}
+// window.addEventListener("resize", windowSizeHandler);
 
-
-
+document.querySelector('#name').addEventListener('focus',windowSizeHandler);
+document.querySelector('#email').addEventListener('focus',windowSizeHandler);
+document.querySelector('#message').addEventListener('focus',windowSizeHandler);
 
 //initial call on pageload
 InitialStateOfnav();
